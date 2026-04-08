@@ -1,0 +1,17 @@
+.DS_Store
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+mise.local.toml
+
+# Python virtualenvs and caches
+.venv/
+__pycache__/
+*.py[cod]
+
+# Test and tooling caches
+.pytest_cache/
+.coverage
+htmlcov/
