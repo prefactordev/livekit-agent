@@ -18,13 +18,3 @@ run = "uv run python main.py console"
 description = "Run the agent against a LiveKit deployment"
 depends = ["sync"]
 run = "uv run python main.py dev"
-
-[tasks.smoke-text]
-description = "Run text-only smoke tests against the web research agent"
-depends = ["sync"]
-run = "uv run python scripts/text_smoke.py"
-
-[tasks.verify-prefactor]
-description = "Run a text smoke test and fail if Prefactor spans are missing"
-depends = ["sync"]
-run = "uv run python scripts/text_smoke.py --verify-prefactor"

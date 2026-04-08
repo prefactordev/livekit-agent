@@ -54,9 +54,8 @@ DEFAULT_PREFACTOR_AGENT_NAME = "Web Research Agent"
 DEFAULT_PREFACTOR_DOWNLOAD_COMMAND = "mise -E local run download-files"
 DEFAULT_EXA_MAX_RESULTS = 5
 DEFAULT_EXA_SEARCH_TYPE = "auto"
-MAX_EXA_RESULTS = 10
+MAX_EXA_RESULTS = 5
 SEARCH_RESULT_TEXT_CHAR_LIMIT = 1600
-BALANCED_CARTESIA_VOICE = "9626c31c-bec5-4cca-baa8-f8ba9e84c8bc"
 VALID_EXA_SEARCH_TYPES = frozenset(
     {
         "neural",
@@ -108,7 +107,7 @@ PRESET_CONFIGS: dict[str, AgentConfig] = {
         stt_model="deepgram/nova-3",
         stt_language="en",
         tts_model="cartesia/sonic-3",
-        tts_voice=BALANCED_CARTESIA_VOICE,
+        tts_voice="a4a16c5e-5902-4732-b9b6-2a48efd2e11b",
     ),
 }
 
