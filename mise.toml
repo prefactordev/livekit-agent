@@ -18,3 +18,8 @@ run = "uv run python main.py console"
 description = "Run the agent against a LiveKit deployment"
 depends = ["sync"]
 run = "uv run python main.py dev"
+
+[tasks.download-files]
+description = "Download local LiveKit turn-detector assets"
+depends = ["sync"]
+run = "uv run python main.py download-files"
