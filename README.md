@@ -44,6 +44,17 @@ Run against a LiveKit deployment:
 mise -E local run dev
 ```
 
+## Test
+
+Run the offline test suite (no LiveKit, Exa or Prefactor calls):
+
+```sh
+mise run test
+```
+
+The turn-detector tests are skipped until the model files are downloaded
+(`mise run download-files`).
+
 ## Optional Config
 
 - `AGENT_PRESET` (`budget` or `balanced`)

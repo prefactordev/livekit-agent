@@ -262,6 +262,15 @@ def build_schema_registry() -> SchemaRegistry:
     return registry
 
 
+def session_setup_params(preset_name: str) -> dict[str, object]:
+    """Params for the example:session_setup span; only sent when tracing is on."""
+    return {
+        "preset": preset_name,
+        "search_provider": "exa",
+        "tracing_enabled": True,
+    }
+
+
 def build_prefactor_tracer() -> PrefactorLiveKitSession | None:
     api_url = (os.getenv("PREFACTOR_API_URL") or "").strip()
     api_token = (os.getenv("PREFACTOR_API_TOKEN") or "").strip()
@@ -379,12 +388,7 @@ async def web_research_agent(ctx: JobContext) -> None:
             try:
                 instance = await tracer.ensure_initialized()
                 async with instance.span("example:session_setup") as span:
-                    await span.start(
-                        {
-                            "preset": preset_name,
-                            "search_provider": "exa",
-                        }
-                    )
+                    await span.start(session_setup_params(preset_name))
                     await span.complete({"status": "ready"})
                 await tracer.start(session=session, agent=agent, room=ctx.room)
             except Exception:
