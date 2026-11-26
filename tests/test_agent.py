@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from unittest import mock
 
 import pytest
@@ -53,7 +54,11 @@ def turn_detector_runner():
     try:
         runner.initialize()
     except RuntimeError as exc:
-        pytest.skip(f"turn-detector model not downloaded (run `mise run download-files`): {exc}")
+        message = f"turn-detector model not downloaded (run `mise run download-files`): {exc}"
+        if os.environ.get("CI"):
+            # CI downloads the model first, so a miss there is a real failure.
+            pytest.fail(message)
+        pytest.skip(message)
     return runner
 
 
