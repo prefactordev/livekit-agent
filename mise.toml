@@ -1,6 +1,6 @@
 [tools]
-python = "3.12"
-uv = "0.9.26"
+python = "3.14"
+uv = "0.13.10"
 
 [env]
 UV_PROJECT_ENVIRONMENT = ".venv"
@@ -23,3 +23,8 @@ run = "uv run python main.py dev"
 description = "Download local LiveKit turn-detector assets"
 depends = ["sync"]
 run = "uv run python main.py download-files"
+
+[tasks.test]
+description = "Run the offline test suite"
+depends = ["sync"]
+run = "uv run pytest"
